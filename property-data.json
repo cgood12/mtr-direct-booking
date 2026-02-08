@@ -1,0 +1,83 @@
+{
+  "title": "Luxury 3BR at The Pearl - Private Hot Tub - Dual King Suites",
+  "location": {
+    "neighborhood": "Tobin Hill",
+    "city": "San Antonio",
+    "state": "Texas",
+    "coords": { "lat": 29.444074, "lng": -98.485218 }
+  },
+  "property": {
+    "type": "House",
+    "style": "1910 Craftsman — Modern Renovation",
+    "sqft": 1100,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "beds": [
+      { "room": "Bedroom 1", "type": "King Bed" },
+      { "room": "Bedroom 2", "type": "King Bed" },
+      { "room": "Bedroom 3", "type": "Double (Full) Bed" }
+    ],
+    "bathDetails": [
+      { "room": "Bathroom 1", "type": "Private Bath" },
+      { "room": "Bathroom 2", "type": "Private Bath" }
+    ]
+  },
+  "pricing": {
+    "monthly": 4500,
+    "utilitiesIncluded": true,
+    "cleaningFee": 300,
+    "deposit": 2000,
+    "depositRefundable": true,
+    "petDeposit": 500,
+    "petDepositRefundable": false,
+    "minimumStay": "30 days"
+  },
+  "rules": {
+    "maxOccupancy": 6,
+    "maxVehicles": 3,
+    "petsAllowed": true,
+    "smokingAllowed": false
+  },
+  "highlights": [
+    "4.9 rating (160+ reviews on Airbnb)",
+    "892 Mbps Fiber Wi-Fi + dedicated workspace",
+    "J-335 Hot Tub under lighted gazebo",
+    "Weber grill + fire pit in gated yard",
+    "65\" Smart TV (Netflix, Hulu, Max, Prime)",
+    "Fully equipped kitchen",
+    "In-unit washer/dryer (supplies included)",
+    "SimpliSafe Security System",
+    "Secure gated parking (2 cars)"
+  ],
+  "amenities": {
+    "kitchen": ["Full kitchen", "Dishwasher", "Microwave", "Full-Size Fridge", "Kitchen essentials"],
+    "interior": ["Air Conditioning", "Heating", "Essentials (Kitchenware, Bathware, Linens)", "Full-size ironing board", "Storage"],
+    "entertainment": ["65\" Smart TV", "Netflix", "Hulu", "Max", "Prime Video", "WiFi (892 Mbps Fiber)"],
+    "outdoor": ["J-335 Hot Tub", "Weber Grill", "Fire Pit", "Gated Yard"],
+    "laundry": ["Washer and dryer", "Laundry supplies included"],
+    "safety": ["SimpliSafe Security System", "Gated parking"],
+    "workspace": ["Dedicated workspace"],
+    "parking": ["Secure gated parking", "Up to 3 vehicles"]
+  },
+  "nearbyHospitals": [
+    { "name": "Methodist Hospital Metropolitan", "distance": "0.8 miles" },
+    { "name": "Baptist Medical Center (Downtown)", "distance": "1.4 miles" },
+    { "name": "Children's Hospital of San Antonio", "distance": "1.8 miles" },
+    { "name": "Brooke Army Medical Center (BAMC)", "distance": "4 miles" },
+    { "name": "University Hospital (Medical Center)", "distance": "10.4 miles" }
+  ],
+  "description": {
+    "main": "Proven Excellence: 4.9 rating (160+ reviews on Airbnb) ensures a seamless, clean stay. Sleep Quality: 2 King beds consistently praised for comfort. Work/Life Balance: 892 Mbps Fiber Wi-Fi + dedicated workspace. Private Oasis: J-335 Hot Tub, Weber grill, and fire pit in a gated yard. Total Security: SimpliSafe Security System and gated private parking for 2 cars. Central: Steps to The Pearl; <5 mins to Methodist Metro/Baptist Med.",
+    "space": "Meticulously maintained 1910 Craftsman - modern renovation with a 4.93 rating (160+ reviews on Airbnb) for cleanliness, comfort, and central location. 2 King beds + 1 Full + 1 Twin. Fiber Wi-Fi (892 Mbps) + dedicated workspace. 65\" Smart TV. Private Jacuzzi J-335 hot tub under lighted gazebo. Fully equipped kitchen + Weber grill & fire pit. In-unit washer/dryer (supplies included). Secure gated parking.",
+    "neighborhood": "Tobin Hill is an established, quiet neighborhood ideal for families & professionals. You're a short walk from The Pearl's dining & riverfront. Families are minutes from the Zoo & Brackenridge Park. Unbeatable for medical staff: <5 mins to Methodist Metro & Baptist Medical. With HEB nearby & fast access to 281/I-10/I-35, this central hub makes daily life & commuting effortless. A meticulous, peaceful home-away-from-home for your long-term stay.",
+    "smartTV": "65\" Smart TV with Netflix, Hulu, Max & Prime (requires guest sign-in). 892 Mbps Fiber for seamless 4K streaming. Simple, one-remote interface for easy use.",
+    "hosts": "Hello! I'm Chad, she's Michelle - and we're excited to welcome you to our fully furnished home in beautiful San Antonio, Texas. A little about us: we have two young kids who keep us laughing, learning, and running on coffee. We love good food, family adventures, and discovering local hidden gems around San Antonio and the beautiful Texas Hill Country. Our hosting style is grounded in the same philosophy that inspired us as travelers: create a space that feels comfortable, thoughtful, and genuinely cared for. We've designed our home to make long-term stays effortless with all the essentials, a well-equipped kitchen, and modern amenities for remote work or relaxation. We understand that many of our guests are professionals on assignment, relocating families, or individuals between homes, so our goal is to provide a warm, reliable space that feels like your own. Whether you're here for work, transition, or exploration, we hope our home becomes a calm and welcoming place to land."
+  },
+  "hosts": {
+    "names": "Chad & Michelle",
+    "location": "Austin, TX",
+    "verified": ["Accepts online payment", "Phone number verified", "ID verified"]
+  },
+  "furnishedFinderUrl": "https://www.furnishedfinder.com/property/946153_1",
+  "photos": 25
+}
