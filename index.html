@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Pearl Craftsman | Furnished 3BR in San Antonio | Direct Booking</title>
-<meta name="description" content="Luxury furnished 3-bedroom Craftsman home in Tobin Hill, San Antonio. Direct booking saves you 15%. Near hospitals, military bases, and downtown. Monthly rates available.">
+<title>The Pearl Craftsman | Furnished 3BR San Antonio | Direct Booking</title>
+<meta name="description" content="Luxury furnished 3-bedroom Craftsman in Tobin Hill, San Antonio. Direct booking saves 15%. Near hospitals and military bases. Monthly rates available.">
 
 <!-- TODO: Replace G-PLACEHOLDER with your real GA4 Measurement ID from https://analytics.google.com -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
@@ -12,7 +12,7 @@
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-PLACEHOLDER');
+gtag('config', 'G-PLACEHOLDER', { send_page_view: true });
 </script>
 
 <meta property="og:url" content="https://mtr-direct-booking.vercel.app/">
@@ -40,7 +40,7 @@ gtag('config', 'G-PLACEHOLDER');
   "@context": "https://schema.org",
   "@type": ["LodgingBusiness", "LocalBusiness"],
   "name": "The Pearl Craftsman — Luxury Furnished Rental",
-  "description": "Luxury furnished 3-bedroom Craftsman home in Tobin Hill, San Antonio. Direct booking saves you 15%. Near hospitals, military bases, and downtown. Monthly rates available.",
+  "description": "Luxury furnished 3-bedroom Craftsman in Tobin Hill, San Antonio. Direct booking saves 15%. Near hospitals and military bases. Monthly rates available.",
   "url": "https://mtr-direct-booking.vercel.app/",
   "image": "https://mtr-direct-booking.vercel.app/photos/photo-01.jpg",
   "telephone": "+1-210-000-0000",
@@ -683,7 +683,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:48px 0 24px
     <span><span class="cal-legend-dot green"></span> Available</span>
     <span><span class="cal-legend-dot red"></span> Booked</span>
   </div>
-  <p class="cal-sync-note">Calendar synced daily. For real-time availability, contact us.</p>
+  <p class="cal-sync-note">Calendar updated daily. Contact us for real-time availability.</p>
 </div>
 </section>
 
@@ -834,8 +834,9 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:48px 0 24px
 <div class="deposit-modal-overlay" id="deposit-modal">
   <div class="deposit-modal">
     <button class="deposit-modal-close" onclick="closeDepositModal()" aria-label="Close">&times;</button>
-    <h3>Secure Payment Coming Soon</h3>
-    <p>We will send you a payment link via email to securely pay your deposit. No action needed right now!</p>
+    <h3>Secure Your Booking</h3>
+    <!-- TODO: Integrate Stripe Checkout here — create a Payment Link or Checkout Session for the deposit amount -->
+    <p>We will send you a payment link to hold your dates.</p>
     <button class="deposit-btn" onclick="closeDepositModal()">Got It</button>
   </div>
 </div>
@@ -1050,11 +1051,11 @@ document.getElementById('inquiry-form').addEventListener('submit',function(e){
     trackEvent('generate_lead', { event_category: 'engagement', event_label: 'inquiry_form' });
   }.bind(this))
   .catch(function(){
-    // Fallback: agent unreachable — show friendly message with guest's email
+    // Fallback: agent unreachable — show friendly message
     this.reset();
     success.style.display='none';
-    status.innerHTML='Thanks for reaching out! We will get back to you shortly at <strong>'+guestEmail.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</strong>.';
-    status.className='form-status success';
+    status.textContent='Thanks! We will contact you shortly.';
+    status.className='form-status error';
     status.style.display='block';
     trackEvent('generate_lead', { event_category: 'engagement', event_label: 'inquiry_form_fallback' });
   }.bind(this))
