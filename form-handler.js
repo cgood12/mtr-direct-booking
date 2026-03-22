@@ -6,7 +6,7 @@ const http = require('http');
 const { execSync } = require('child_process');
 
 const PORT = 3457;
-const TO_EMAIL = 'chadwick23.ai@gmail.com';
+const TO_EMAIL = 'candmcapital.llc@gmail.com';
 
 const server = http.createServer((req, res) => {
   // CORS headers

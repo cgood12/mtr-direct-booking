@@ -1,6 +1,6 @@
 (function() {
   const BOT_NAME = 'Pearl';
-  const CONTACT_EMAIL = 'chadwick23.ai@gmail.com';
+  const CONTACT_EMAIL = 'candmcapital.llc@gmail.com';
 
   // Knowledge base — pattern matching with keywords
   const KB = [
