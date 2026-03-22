@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/availability.json", "destination": "/data/blocked-dates.json" },
-    { "source": "/api/create-checkout", "destination": "/api/create-checkout.js" }
+    { "source": "/api/create-checkout", "destination": "/api/create-checkout.js" },
+    { "source": "/api/availability", "destination": "/api/availability.js" }
   ]
 }

@@ -1124,10 +1124,16 @@ async function startCheckout(){
 /* ── AVAILABILITY CALENDAR ── */
 (function(){
   var blockedDates=[];
-  fetch('/data/blocked-dates.json')
+  fetch('/api/availability')
     .then(function(r){return r.json()})
-    .then(function(data){blockedDates=data;renderCalendars()})
-    .catch(function(){renderCalendars()});
+    .then(function(data){blockedDates=data.blockedDates||[];renderCalendars()})
+    .catch(function(){
+      // fallback to static file if API fails
+      fetch('/data/blocked-dates.json')
+        .then(function(r){return r.json()})
+        .then(function(data){blockedDates=data;renderCalendars()})
+        .catch(function(){renderCalendars()});
+    });
 
   function renderCalendars(){
     var wrapper=document.getElementById('calendar-wrapper');
