@@ -818,12 +818,7 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:48px 0 24px
       <div class="form-status" id="form-status"></div>
       <div class="form-status success" id="form-success" style="display:none">
         <p>Thanks! Alex will be in touch within 10 minutes.</p>
-        <!-- TODO: Wire this button to Stripe Checkout once you have a Stripe account.
-             1. Create a Stripe account at https://dashboard.stripe.com
-             2. Create a Payment Link or Checkout Session for the deposit amount
-             3. Replace the openDepositModal() call with window.location.href to your Stripe Checkout URL
-             4. Or integrate Stripe.js for an embedded checkout experience -->
-        <button type="button" class="deposit-btn" onclick="openDepositModal()" style="margin-top:16px">Pay Deposit</button>
+        <button type="button" class="deposit-btn" onclick="openDepositModal()" style="margin-top:16px">Pay Deposit — Hold My Dates</button>
       </div>
     </form>
   </div>
@@ -834,10 +829,13 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:48px 0 24px
 <div class="deposit-modal-overlay" id="deposit-modal">
   <div class="deposit-modal">
     <button class="deposit-modal-close" onclick="closeDepositModal()" aria-label="Close">&times;</button>
-    <h3>Secure Your Booking</h3>
-    <!-- TODO: Integrate Stripe Checkout here — create a Payment Link or Checkout Session for the deposit amount -->
-    <p>We will send you a payment link to hold your dates.</p>
-    <button class="deposit-btn" onclick="closeDepositModal()">Got It</button>
+    <h3>Secure Your Dates</h3>
+    <p>A $1,500 refundable security deposit holds your move-in date. You'll be redirected to Stripe's secure checkout.</p>
+    <div style="margin-bottom:16px">
+      <input id="deposit-email" type="email" placeholder="Your email address" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:.95rem;font-family:inherit;box-sizing:border-box;margin-bottom:8px">
+    </div>
+    <button class="deposit-btn" onclick="startCheckout()" id="checkout-btn">Pay $1,500 Deposit →</button>
+    <p style="font-size:.8rem;color:#999;margin-top:12px">🔒 Secured by Stripe. Refundable per lease terms.</p>
   </div>
 </div>
 
@@ -1066,6 +1064,11 @@ document.getElementById('inquiry-form').addEventListener('submit',function(e){
 function openDepositModal(){
   document.getElementById('deposit-modal').classList.add('active');
   document.body.style.overflow='hidden';
+  // Pre-fill email if captured from inquiry form
+  var inquiryEmail=document.getElementById('email');
+  if(inquiryEmail && inquiryEmail.value){
+    document.getElementById('deposit-email').value=inquiryEmail.value;
+  }
 }
 function closeDepositModal(){
   document.getElementById('deposit-modal').classList.remove('active');
@@ -1074,6 +1077,49 @@ function closeDepositModal(){
 document.getElementById('deposit-modal').addEventListener('click',function(e){
   if(e.target===this) closeDepositModal();
 });
+
+async function startCheckout(){
+  var btn=document.getElementById('checkout-btn');
+  var email=document.getElementById('deposit-email').value.trim();
+  var moveIn=document.getElementById('move-in')&&document.getElementById('move-in').value||'';
+  var months=document.getElementById('months')&&document.getElementById('months').value||'';
+
+  btn.disabled=true;
+  btn.textContent='Redirecting to Stripe...';
+
+  try{
+    var res=await fetch('/api/create-checkout',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({guestEmail:email,moveInDate:moveIn,months:months})
+    });
+    var data=await res.json();
+    if(data.url){
+      window.location.href=data.url;
+    } else {
+      alert('Something went wrong. Please try again or contact us directly.');
+      btn.disabled=false;
+      btn.textContent='Pay $1,500 Deposit →';
+    }
+  } catch(err){
+    alert('Connection error. Please try again.');
+    btn.disabled=false;
+    btn.textContent='Pay $1,500 Deposit →';
+  }
+}
+
+// Handle return from Stripe
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('deposit')==='success'){
+    var el=document.createElement('div');
+    el.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#2d6a4f;color:#fff;padding:16px 28px;border-radius:12px;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.2)';
+    el.textContent='✅ Deposit received! Alex will be in touch within 10 minutes.';
+    document.body.appendChild(el);
+    setTimeout(function(){el.remove()},8000);
+    history.replaceState(null,'','/');
+  }
+})();
 
 /* ── AVAILABILITY CALENDAR ── */
 (function(){
