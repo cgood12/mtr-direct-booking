@@ -10,10 +10,10 @@ const DEPOSIT_AMOUNT = 150000; // $1,500.00 in cents
 const PROPERTY_NAME = 'The Pearl Craftsman — Tobin Hill, San Antonio';
 const SUCCESS_URL = process.env.SITE_URL
   ? `${process.env.SITE_URL}/?deposit=success`
-  : 'https://mtr-direct-booking.vercel.app/?deposit=success';
+  : 'https://thepearlcraftsman.com/?deposit=success';
 const CANCEL_URL = process.env.SITE_URL
   ? `${process.env.SITE_URL}/?deposit=cancel`
-  : 'https://mtr-direct-booking.vercel.app/?deposit=cancel';
+  : 'https://thepearlcraftsman.com/?deposit=cancel';
 
 module.exports = async (req, res) => {
   // CORS
@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
             product_data: {
               name: `Security Deposit — ${PROPERTY_NAME}`,
               description: description || 'Refundable security deposit for furnished monthly rental',
-              images: ['https://mtr-direct-booking.vercel.app/photos/photo-01.jpg'],
+              images: ['https://thepearlcraftsman.com/photos/photo-01.jpg'],
             },
             unit_amount: DEPOSIT_AMOUNT,
           },
