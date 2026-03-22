@@ -255,6 +255,13 @@ nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .lightbox-prev{left:16px}
 .lightbox-next{right:16px}
 .lightbox-counter{color:rgba(255,255,255,.7);font-size:.85rem;margin-top:16px;font-weight:500}
+@media(max-width:768px){
+  .lightbox img{max-width:95vw;max-height:75vh}
+  .lightbox-arrow{width:44px;height:44px;font-size:2rem}
+  .lightbox-prev{left:8px}
+  .lightbox-next{right:8px}
+  .lightbox-close{top:12px;right:12px;font-size:1.8rem;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+}
 
 /* AT A GLANCE */
 .glance{background:var(--sage);padding:80px 0}
