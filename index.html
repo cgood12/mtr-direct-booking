@@ -830,11 +830,11 @@ footer{background:var(--charcoal);color:rgba(255,255,255,.6);padding:48px 0 24px
   <div class="deposit-modal">
     <button class="deposit-modal-close" onclick="closeDepositModal()" aria-label="Close">&times;</button>
     <h3>Secure Your Dates</h3>
-    <p>A $1,500 refundable security deposit holds your move-in date. You'll be redirected to Stripe's secure checkout.</p>
+    <p>A $2,000 refundable security deposit holds your move-in date. You'll be redirected to Stripe's secure checkout.</p>
     <div style="margin-bottom:16px">
       <input id="deposit-email" type="email" placeholder="Your email address" style="width:100%;padding:10px 14px;border:1px solid #ddd;border-radius:8px;font-size:.95rem;font-family:inherit;box-sizing:border-box;margin-bottom:8px">
     </div>
-    <button class="deposit-btn" onclick="startCheckout()" id="checkout-btn">Pay $1,500 Deposit →</button>
+    <button class="deposit-btn" onclick="startCheckout()" id="checkout-btn">Pay $2,000 Deposit →</button>
     <p style="font-size:.8rem;color:#999;margin-top:12px">🔒 Secured by Stripe. Refundable per lease terms.</p>
   </div>
 </div>
@@ -1099,12 +1099,12 @@ async function startCheckout(){
     } else {
       alert('Something went wrong. Please try again or contact us directly.');
       btn.disabled=false;
-      btn.textContent='Pay $1,500 Deposit →';
+      btn.textContent='Pay $2,000 Deposit →';
     }
   } catch(err){
     alert('Connection error. Please try again.');
     btn.disabled=false;
-    btn.textContent='Pay $1,500 Deposit →';
+    btn.textContent='Pay $2,000 Deposit →';
   }
 }
 

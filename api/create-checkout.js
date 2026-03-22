@@ -6,7 +6,7 @@
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const DEPOSIT_AMOUNT = 150000; // $1,500.00 in cents
+const DEPOSIT_AMOUNT = 200000; // $2,000.00 in cents
 const PROPERTY_NAME = 'The Pearl Craftsman — Tobin Hill, San Antonio';
 const SUCCESS_URL = process.env.SITE_URL
   ? `${process.env.SITE_URL}/?deposit=success`
