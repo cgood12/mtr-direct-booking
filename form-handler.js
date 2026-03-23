@@ -3,7 +3,17 @@
 // The booking site POSTs form data here, we email it to Chad
 
 const http = require('http');
-const { execSync } = require('child_process');
+const { spawnSync } = require('child_process');
+const fs = require('fs');
+
+// Safe shell execution — no string interpolation
+function gogSend({ to, subject, bodyFile }) {
+  const result = spawnSync('gog', ['gmail', 'send', '--to', to, '--subject', subject, '--body-file', bodyFile], {
+    timeout: 15000,
+    encoding: 'utf8',
+  });
+  if (result.status !== 0) throw new Error(result.stderr || 'gog send failed');
+}
 
 const PORT = 3457;
 const TO_EMAIL = 'candmcapital.llc@gmail.com';
@@ -48,19 +58,17 @@ const server = http.createServer((req, res) => {
           `Sent from your direct booking site`
         ].join('\n');
 
-        const subject = `🏠 New MTR Inquiry: ${name} (${move_in} → ${move_out})`;
+        const subject = `New MTR Inquiry: ${name} (${move_in} to ${move_out})`;
 
         // Write body to temp file for gog
         const tmpFile = `/tmp/inquiry-${Date.now()}.txt`;
-        require('fs').writeFileSync(tmpFile, emailBody);
+        fs.writeFileSync(tmpFile, emailBody);
 
-        // Send via gog
-        execSync(`gog gmail send --to "${TO_EMAIL}" --subject "${subject}" --body-file "${tmpFile}"`, {
-          timeout: 15000
-        });
+        // Send via gog (safe — no shell interpolation)
+        gogSend({ to: TO_EMAIL, subject, bodyFile: tmpFile });
 
         // Clean up
-        require('fs').unlinkSync(tmpFile);
+        fs.unlinkSync(tmpFile);
 
         // Also notify via Telegram through OpenClaw
         console.log(`✅ Inquiry from ${name} (${email}) — ${move_in} to ${move_out}, ${guests} guests`);
