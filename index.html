@@ -1053,7 +1053,7 @@ document.getElementById('inquiry-form').addEventListener('submit',function(e){
     source: 'direct-website'
   };
 
-  fetch('http://localhost:3001/inquire',{
+  fetch('https://mtr-booking-agent-production.up.railway.app/inquire',{
     method:'POST',
     body:JSON.stringify(payload),
     headers:{'Content-Type':'application/json','Accept':'application/json'}
